@@ -1,0 +1,14 @@
+<h1> <%= @post.title %> </h1>
+
+<% @post.attributes.each do |key, value| %>
+
+<ul>
+  <li>
+    <%= key.to_s + " is " + value.to_s %>
+  </li>
+</ul>
+<% end %>
+<br>
+
+<%= link_to "edit post", edit_sub_post_url(@post.sub, @post) %>
+<%= link_to "Back to sub", sub_url(@post.sub) %>

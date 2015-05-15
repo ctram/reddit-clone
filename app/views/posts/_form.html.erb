@@ -1,0 +1,24 @@
+<h1 <%= sub.title %> </h1>
+<h2> <%= post_action %> a post </h2>
+<!-- We need post_action, action_url, button_name, method -->
+<form action = "<%=  action_url %>" method = "post">
+  <input type="hidden" name="_method" value = "<%= method %>">
+  <input type="hidden" name = "authenticity_token" value = "<%= form_authenticity_token %>">
+  <input type="hidden" name = "post[author_id]" value = "<%= current_user.id %>">
+  <input type="hidden" name = "post[sub_id]" value ="<%= sub.id %>">
+  <label>Post Title:
+    <input type="text" name = "post[title]" value = "<%= post.title %>">
+  </label>
+  <br>
+  <label>Post URL:
+    <input type="text" name = "post[url]" value = "<%= post.url %>">
+  </label>
+  <br>
+  <label>Post Content:
+    <textarea  name = "post[content]"><%= post.content%></textarea>
+  </label>
+  <br>
+  <input type="submit" value = "<%= button_name %>">
+
+  <br>
+  <%= link_to "Back to the sub!", sub_url(sub.id) %>

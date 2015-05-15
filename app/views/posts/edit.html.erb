@@ -1,0 +1,7 @@
+<%= render 'form',
+  post_action: "Edit",
+  action_url: post_url(@post),
+  post: @post,
+  sub: @sub,
+  method: 'patch',
+  button_name: 'Update!' %>

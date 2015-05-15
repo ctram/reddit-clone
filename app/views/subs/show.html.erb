@@ -1,0 +1,19 @@
+<h1> <%= @sub.title %> </h1>
+<h2> <%= @sub.description %></h2>
+
+<%= button_to 'Add Post', new_sub_post_url(@sub), method: :get %>
+<hr>
+<h3>Posts</h3>
+<ul>
+  <% @sub.posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post_url(post) %>
+      by
+      <%= post.author.username %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Edit Sub", edit_sub_url(@sub) %>
+<br>
+<%= link_to "Back to all Subs", subs_url %>
