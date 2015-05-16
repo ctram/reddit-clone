@@ -10,5 +10,30 @@
 <% end %>
 <br>
 
-<%= link_to "edit post", edit_sub_post_url(@post.sub, @post) %>
-<%= link_to "Back to sub", sub_url(@post.sub) %>
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <ul>
+    <li>
+      <%= render 'comments/comments_comments', parent_comment: comment %>
+    </li>
+  </ul>
+<% end %>
+<br>
+
+
+<ul>
+<% @post.subs.each do |sub| %>
+  <li><%= link_to sub.title, sub_url(sub.id)  %>
+  </li>
+</ul>
+<% end %>
+
+<%= button_to 'Edit Post', edit_post_url(@post), method: :get %>
+
+<%= button_to 'Make a comment',
+    new_comment_url,
+    method: :get,
+    params: {
+      post_id: @post.id,
+      source_type: @post.class.to_s,
+      source_id: @post.id } %>

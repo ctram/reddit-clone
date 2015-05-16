@@ -1,0 +1,13 @@
+<%= parent_comment.content %> by <%= parent_comment.author.username %> posted at <%= time_ago_in_words(parent_comment.created_at) %>
+<ul>
+  <li>
+    <%= button_to 'Add Comment', new_comment_url, method: :get, params: {post_id: @post.id, source_type: parent_comment.class.to_s, source_id: parent_comment.id} %>
+  </li>
+    <% if parent_comment.comments.length > 0 %>
+      <li>
+        <% parent_comment.comments.each do |child_comment| %>
+            <%= render 'comments/comments_comments', parent_comment: child_comment %>
+        <% end %>
+      </li>
+    <% end %>
+</ul>

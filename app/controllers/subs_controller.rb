@@ -1,5 +1,6 @@
 class SubsController < ApplicationController
   before_action :moderator?, only: :edit
+  before_action :logged_in?
   def new
     @sub = Sub.new
     render :new

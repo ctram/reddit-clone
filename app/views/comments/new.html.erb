@@ -1,0 +1,12 @@
+<h1> Create a new comment! </h1>
+
+<%= render 'form',
+  comment_action: 'Add',
+  action_url: comments_url,
+  method:'POST',
+  comment: @comment,
+  button_name: 'Add Comment',
+  source_type: @source_type,
+  source_id: @source_id,
+  post_id: @post_id
+   %>
